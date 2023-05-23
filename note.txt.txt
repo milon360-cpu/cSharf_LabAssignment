@@ -1,0 +1,394 @@
+0. Write a C# program to sort a list of elements using Insertion sort.
+            int len;
+            Console.Write("Please Enter How Many Element:\t");
+            len = Convert.ToInt32(Console.ReadLine());
+
+            int[] number = new int[len];
+
+            Console.WriteLine("\nPlease Enter Your Value:");
+
+            for(int i=0; i<len; i++)
+            {
+                Console.Write("Value_"+(i+1)+":\t ");
+                number[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            //Print Unsorted  Array Here 
+            Console.Write("\nUnsorted Array:\t");
+            for(int i=0; i<len; i++)
+            {
+                Console.Write(number[i]+"  ");
+            }
+
+
+
+            //Insertion Sort 
+            for(int i=0; i<len; i++)
+            {
+                int j = i;
+                while(j>0 && number[j] < number[j - 1])
+                {
+    
+                        int temp = number[j];
+                        number[j] = number[j - 1];
+                        number[j - 1] = temp;
+                        j--;
+                }
+            }
+            //Print Sorted Array Here 
+            Console.Write("\nSorted Array:\t");
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write(number[i] + "  ");
+            }
+
+
+
+1. Write a C# program to sort a list of elements using Bubble sort.
+            int len;
+            Console.Write("Please Enter How Many Element:\t");
+            len = Convert.ToInt32(Console.ReadLine());
+
+            int[] number = new int[len];
+
+            Console.WriteLine("\nPlease Enter Your Value:");
+
+            for(int i=0; i<len; i++)
+            {
+                Console.Write("Value_"+(i+1)+":\t ");
+                number[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            //Print Unsorted  Array Here 
+            Console.Write("\nUnsorted Array:\t");
+            for(int i=0; i<len; i++)
+            {
+                Console.Write(number[i]+"  ");
+            }
+
+
+
+            //Insertion Sort 
+            for(int i=0; i<len-1; i++)
+            {
+               for(int j=0; j<len-1; j++)
+                {
+                    if(number[j] > number[j+1])
+                    {
+                        int temp = number[j];
+                        number[j] = number[j + 1];
+                        number[j + 1] = temp;
+                    }
+                }
+               
+            }
+            //Print Sorted Array Here 
+            Console.Write("\nSorted Array:\t");
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write(number[i] + "  ");
+            }
+
+
+
+2. Write a C# program to sort a list of elements using Selection sort.
+            int len;
+            Console.Write("Please Enter How Many Element:\t");
+            len = Convert.ToInt32(Console.ReadLine());
+
+            int[] number = new int[len];
+
+            Console.WriteLine("\nPlease Enter Your Value:");
+
+            for(int i=0; i<len; i++)
+            {
+                Console.Write("Value_"+(i+1)+":\t ");
+                number[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            //Print Unsorted  Array Here 
+            Console.Write("\nUnsorted Array:\t");
+            for(int i=0; i<len; i++)
+            {
+                Console.Write(number[i]+"  ");
+            }
+
+
+
+            //Insertion Sort 
+            for(int i=0; i<len-1; i++)
+            {
+               for(int j=1; j<len; j++)
+                {
+                    if(number[i] > number[j])
+                    {
+                        int temp = number[j];
+                        number[j] = number[i];
+                        number[i] = temp;
+                    }
+                }
+               
+            }
+            //Print Sorted Array Here 
+            Console.Write("\nSorted Array:\t");
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write(number[i] + "  ");
+            }
+
+
+3. Write a C# program to sort a list of elements using Quick sort
+       static void Main(string[] args)
+        {
+
+            int len;
+            Console.Write("Please Enter How Many Element:\t");
+            len = Convert.ToInt32(Console.ReadLine());
+
+            int[] number = new int[len];
+
+            Console.WriteLine("\nPlease Enter Your Value:");
+
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write("Value_" + (i + 1) + ":\t ");
+                number[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            //Print Unsorted  Array Here 
+            Console.Write("\nUnsorted Array:\t");
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write(number[i] + "  ");
+            }
+
+            QuickSort(number, 0, len - 1);
+
+            Console.WriteLine("Sorted array: ");
+            PrintArray(number );
+
+            //wating for console 
+            Console.ReadKey();   
+   
+        }
+
+
+        static void QuickSort(int[] array, int low, int high)
+        {
+            if (low < high)
+            {
+                int pivotIndex = Partition(array, low, high);
+
+                QuickSort(array, low, pivotIndex - 1);
+                QuickSort(array, pivotIndex + 1, high);
+            }
+        }
+
+        static int Partition(int[] array, int low, int high)
+        {
+            int pivot = array[high];
+            int i = low - 1;
+
+            for (int j = low; j < high; j++)
+            {
+                if (array[j] < pivot)
+                {
+                    i++;
+                    Swap(array, i, j);
+                }
+            }
+
+            Swap(array, i + 1, high);
+
+            return i + 1;
+        }
+
+        static void Swap(int[] array, int i, int j)
+        {
+            int temp = array[i];
+            array[i] = array[j];
+            array[j] = temp;
+        }
+
+        static void PrintArray(int[] array)
+        {
+            foreach (int element in array)
+            {
+                Console.Write(element + " ");
+            }
+
+            Console.WriteLine();
+        }
+
+
+
+4. Write a C# program to sort a list of elements using Merge sort.
+
+        public static void Main(string[] args)
+        {
+            List<int> numbers = new List<int> { 5, 2, 8, 4, 1, 9, 3, 7, 6 };
+            Console.Write("Original list: ");
+            PrintList(numbers);
+
+            MergeSortList(numbers);
+
+            Console.Write("\nSorted list: ");
+            PrintList(numbers);
+
+
+            Console.ReadKey();
+        }
+
+        public static void MergeSortList(List<int> numbers)
+        {
+            if (numbers.Count <= 1)
+                return;
+
+            List<int> left = new List<int>();
+            List<int> right = new List<int>();
+
+            int middle = numbers.Count / 2;
+            for (int i = 0; i < middle; i++)
+            {
+                left.Add(numbers[i]);
+            }
+
+            for (int i = middle; i < numbers.Count; i++)
+            {
+                right.Add(numbers[i]);
+            }
+
+            MergeSortList(left);
+            MergeSortList(right);
+            Merge(numbers, left, right);
+        }
+
+        public static void Merge(List<int> numbers, List<int> left, List<int> right)
+        {
+            int leftIndex = 0;
+            int rightIndex = 0;
+            int mergedIndex = 0;
+
+            while (leftIndex < left.Count && rightIndex < right.Count)
+            {
+                if (left[leftIndex] < right[rightIndex])
+                {
+                    numbers[mergedIndex] = left[leftIndex];
+                    leftIndex++;
+                }
+                else
+                {
+                    numbers[mergedIndex] = right[rightIndex];
+                    rightIndex++;
+                }
+
+                mergedIndex++;
+            }
+
+            while (leftIndex < left.Count)
+            {
+                numbers[mergedIndex] = left[leftIndex];
+                leftIndex++;
+                mergedIndex++;
+            }
+
+            while (rightIndex < right.Count)
+            {
+                numbers[mergedIndex] = right[rightIndex];
+                rightIndex++;
+                mergedIndex++;
+            }
+        }
+
+        public static void PrintList(List<int> numbers)
+        {
+            foreach (int num in numbers)
+            {
+                Console.Write(num + " ");
+            }
+            Console.WriteLine();
+        }
+
+
+
+
+5. Write a C# program to perform Binary search.
+
+            int len;
+            Console.Write("Please Enter How Many Element:\t");
+            len = Convert.ToInt32(Console.ReadLine());
+
+            int[] number = new int[len];
+
+            Console.WriteLine("\nPlease Enter Your Value:");
+
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write("Value_" + (i + 1) + ":\t ");
+                number[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            Array.Sort(number);
+            int searchingNumber;
+            Console.Write("\nPlease Enter Your Searching Number:\t");
+            searchingNumber = Convert.ToInt32(Console.ReadLine());
+            int left = 0, right = len, middle;
+            while(left <= right)
+            {
+                middle = (left + right) / 2;
+
+                if(number[middle] == searchingNumber)
+                {
+                    Console.WriteLine("Searching Element found");
+                    Console.ReadKey();
+                    return;
+                    
+                }
+                else if(middle > searchingNumber)
+                {
+                    left = middle + 1;
+                }
+                else
+                {
+                    right = middle - 1;
+                }
+            }
+            Console.WriteLine("Element Not Found");
+
+            //  waiting for console 
+            Console.ReadKey();
+
+
+6. Write a C# program to perform Linear search.
+       int len;
+            Console.Write("Please Enter How Many Element:\t");
+            len = Convert.ToInt32(Console.ReadLine());
+
+            int[] number = new int[len];
+
+            Console.WriteLine("\nPlease Enter Your Value:");
+
+            for (int i = 0; i < len; i++)
+            {
+                Console.Write("Value_" + (i + 1) + ":\t ");
+                number[i] = Convert.ToInt32(Console.ReadLine());
+            }
+
+            int searchingNumber;
+            Console.Write("\nPlease Enter Your Searching Number:\t");
+            searchingNumber = Convert.ToInt32(Console.ReadLine());
+            
+            for(int i=0; i<len; i++)
+            {
+                if(searchingNumber == number[i])
+                {
+                    Console.WriteLine("Searching Elemenet is found");
+                    Console.ReadKey();
+                    return;
+                }
+            }
+
+            Console.WriteLine("Searching Element not found");
+
+            //  waiting for console 
+            Console.ReadKey();
